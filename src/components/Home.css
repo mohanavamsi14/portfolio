@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #030819;
+  --card: rgba(11, 24, 63, 0.65);
+  --card-soft: rgba(18, 40, 94, 0.75);
+  --accent: #53d2ff;
+  --accent-2: #4f8dff;
+  --text-main: #f9fbff;
+  --text-soft: #b1b9e3;
+  --radius-xl: 26px;
+  --radius-lg: 18px;
+}
+
+body {
+  margin: 0;
+  justify-content: center;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    radial-gradient(circle at top, #123a7a 0, transparent 55%),
+    radial-gradient(circle at bottom, #061224 0, var(--bg) 55%);
+  color: var(--text-main);
+}
+
+/* root */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: flex-start;
+  padding: 32px 0 40px;      /* remove side padding that pushed it left */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* vertical page container */
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;           /* <– centers inside the screen */
+  padding: 0 16px;          /* small equal side padding */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* cursor glow — synced to blue theme */
+
+.cursor-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    rgba(120, 210, 255, 0.45),
+    rgba(79, 141, 255, 0.26),
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+/* vertical page container */
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* HERO CARD – glassy with fixed bg */
+
+.hero-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  min-height: 420px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
+
+  background-image: url("./portfolio_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  border: 1px solid rgba(161, 206, 255, 0.45);
+  backdrop-filter: blur(22px) saturate(140%);
+}
+
+/* dark + blue tint over the image */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(2, 8, 25, 0.1), rgba(2, 8, 25, 0.9)),
+    radial-gradient(circle at top, rgba(122, 212, 255, 0.4), transparent 55%);
+}
+
+/* hero content */
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 26px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* center vertically */
+  align-items:center;   /* keep content aligned left */
+  gap: 14px;
+}
+
+/* avatar */
+
+.hero-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  padding: 3px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #7ee0ff,
+    #9fd0ff,
+    #53d2ff,
+    #4f8dff
+  );
+  margin-bottom: 6px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-label {
+  margin: 0;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: cornsilk;
+}
+
+.hero-heading {
+  margin: 0;
+  max-width: 560px;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.hero-sub {
+  margin: 0;
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* buttons */
+
+.btn {
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background 0.12s ease, border 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: linear-gradient(120deg, #7ee0ff, #4f8dff);
+  color: #020510;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.85);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.95);
+}
+
+.btn.ghost {
+  background: rgba(5, 16, 40, 0.6);
+  border-color: rgba(166, 207, 255, 0.6);
+  color: var(--text-main);
+}
+
+.btn.ghost:hover {
+  background: rgba(5, 16, 40, 0.9);
+}
+
+/* GLASSY VERTICAL SLIDES */
+
+.section-card {
+  background: linear-gradient(
+      145deg,
+      rgba(20, 49, 112, 0.75),
+      rgba(8, 23, 63, 0.85)
+    );
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(167, 210, 255, 0.45);
+  padding: 18px 18px 20px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px) saturate(160%);
+}
+
+.section-card h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.section-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+/* skills list */
+
+.pill-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill-list li {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(2, 13, 40, 0.65);
+  border: 1px solid rgba(174, 212, 255, 0.55);
+}
+
+/* projects */
+
+.project-item {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(178, 214, 255, 0.4);
+}
+
+.project-item:first-of-type {
+  margin-top: 4px;
+  border-top: none;
+  padding-top: 0;
+}
+
+.project-item h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.project-item p {
+  margin: 0 0 6px;
+}
+
+.tag {
+  display: inline-flex;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(122, 212, 255, 0.18);
+  color: var(--accent);
+}
+
+/* contact */
+
+.contact-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.contact-actions .btn {
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.link-pill {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: rgba(5, 16, 40, 0.7);
+  border: 1px solid rgba(160, 205, 255, 0.5);
+  color: var(--text-soft);
+  transition: background 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.link-pill:hover {
+  background: rgba(5, 16, 40, 0.95);
+  border-color: rgba(190, 225, 255, 0.9);
+  color: var(--text-main);
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+  .hero-content {
+    padding: 22px 18px 26px;
+  }
+
+  .hero-heading {
+    font-size: 26px;
+    max-width: 100%;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-card {
+    min-height: 520px;
+  }
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 26px 32px 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;   /* vertically centered */
+  align-items: center;       /* horizontally centered */
+  text-align: center;        /* center all text */
+
+  gap: 14px;
+}
+
+
+  .hero-heading {
+    font-size: 24px;
+  }
+
+  .hero-sub {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .section-card {
+    padding: 16px 14px 18px;
+  }
+}
+
+/* Resume page */
+
+/* Resume Page Fix — Center PDF Frame */
+
+.resume-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 24px 12px 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center horizontally */
+  justify-content: flex-start;
+
+  gap: 20px;
+}
+
+/* Center the buttons row */
+.resume-top-bar {
+  display: flex;
+  justify-content: center;  /* center the buttons */
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Center the resume card */
+.resume-frame {
+  width: 80%;                     /* nice centered width */
+  max-width: 850px;               /* limit size */
+  height: 90vh;                   /* tall clean look */
+  
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 1px solid rgba(167, 210, 255, 0.45);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.8);
+
+  backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(3, 10, 30, 0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make iframe fill the card */
+.resume-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+}
+
+/* Certificates layout */
+
+.cert-page {
+  max-width: 1200px;
+}
+
+.cert-layout {
+  display: flex;
+  gap: 16px;
+  width: 170%;
+}
+
+/* Left list */
+
+.cert-list {
+  width: 30%;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-item {
+  border-radius: 16px;
+  border: 1px solid rgba(160, 205, 255, 0.4);
+  background: rgba(5, 16, 40, 0.7);
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  font-family: inherit;
+  color: var(--text-main);
+  outline: none;
+
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.cert-item:hover {
+  background: rgba(10, 32, 78, 0.9);
+  border-color: rgba(190, 225, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.cert-item.active {
+  background: linear-gradient(135deg, #7ee0ff1a, #4f8dff33);
+  border-color: #7ee0ff;
+}
+
+.cert-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cert-meta {
+  font-size: 11px;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cert-dot {
+  opacity: 0.7;
+}
+
+/* Right viewer */
+
+.cert-viewer {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* FIX: Certificate Viewer Top Bar */
+.cert-viewer-top {
+  width: 100%;
+  padding: 12px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(3, 10, 30, 0.85);
+  border-bottom: 1px solid rgba(167, 210, 255, 0.35);
+
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Make the certificate title fully visible */
+.cert-viewer-title {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-width: 60%;   /* prevents being pushed off screen */
+}
+
+/* Center the action buttons */
+.cert-viewer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .cert-layout {
+    flex-direction: column;
+  }
+
+  .cert-list,
+  .cert-viewer {
+    width: 100%;
+  }
+}
