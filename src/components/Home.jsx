@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";              // ✅ SAME folder
-import profileImage from "./profileimage.jpg"; // ✅ SAME folder
-
+import profileImage from "./profileImage.jpg";
 export default function Home() {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
