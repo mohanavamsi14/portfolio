@@ -9,28 +9,28 @@ const CERTIFICATES = [
     title: "Oracle Certificate",
     issuer: "Oracle University",
     year: "2025",
-    file: "/oracle(eCertificate).pdf",
+    file: "/portfolio/oracle(eCertificate).pdf"
   },
   {
     id: 2,
     title: "AIML Techinal Internship",
     issuer: "EDU Skills",
     year: "2025",
-    file: "/aiml_techinical_internship.pdf",
+    file: "/portfolio/aiml_techinical_internship.pdf"
   },
   {
     id: 3,
     title: "Linguaskill",
     issuer: "Cambridge University",
     year: "2024",
-    file: "/Linguaskill_cambridge.pdf",
+    file: "/portfolio/Linguaskill_cambridge.pdf"
   },
   {
     id: 4,
     title: "Social Internship",
     issuer: "KL University",
     year: "2024",
-    file: "/SIL_CRETIFICATE.pdf",
+    file: "/portfolio/SIL_CRETIFICATE.pdf"
   },
   // ➜ Add more here, keep file paths matching files in /public
 ];

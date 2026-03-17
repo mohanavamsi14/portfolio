@@ -1,6 +1,5 @@
-// App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home.jsx";
 import Resume from "./components/Resume.jsx";
@@ -10,7 +9,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/portfolio" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/certificates" element={<Certificate />} />
       </Routes>

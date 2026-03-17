@@ -11,7 +11,7 @@ export default function Resume() {
           ← Back to Portfolio
         </Link>
         <a
-          href="/mohan_resume(visa).pdf"
+          href="/portfolio/mohan_resume(visa).pdf"
           className="btn primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -19,7 +19,7 @@ export default function Resume() {
           Open in New Tab
         </a>
         <a
-          href="/mohan_resume(visa).pdf"
+          src="/portfolio/mohan_resume(visa).pdf"
           className="btn ghost"
           download="Mohana_Vamsi_Resume.pdf"
         >
@@ -29,7 +29,7 @@ export default function Resume() {
 
       <div className="resume-frame">
         <iframe
-          src="/mohan_resume(visa).pdf"
+          src="/portfolio/mohan_resume(visa).pdf"
           title="Mohana Vamsi Resume"
           className="resume-iframe"
         />
